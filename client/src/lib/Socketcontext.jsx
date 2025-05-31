@@ -33,7 +33,7 @@ export const SocketProvider = ({ children }) => {
     }
 
     console.log("Initializing socket connection...");
-    socketRef.current = io("http://localhost:1000", {
+    socketRef.current = io("https://notification-1-rtqp.onrender.com", {
       query: { userId },
       transports: ["websocket", "polling"],
       reconnectionAttempts: 5,
