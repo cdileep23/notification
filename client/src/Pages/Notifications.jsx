@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
+import { BASE_URL } from "@/url";
 
 const Notifications = () => {
   const { user } = useOutletContext();
@@ -16,7 +17,7 @@ const Notifications = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:1000/api/v1/get-all/${user.userId}`
+        `${BASE_URL}/get-all/${user.userId}`
       );
       if (response.data.success) {
         setNotifications(response.data.notifications);

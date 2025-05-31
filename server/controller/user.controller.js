@@ -92,7 +92,7 @@ export const followUser = async (req, res) => {
     const targetRoomId = userToFollow._id.toString();
     console.log("🎯 Target room ID:", targetRoomId);
 
-    // Check if target room has any clients
+    
     const room = io.sockets.adapter.rooms.get(targetRoomId);
     console.log(
       "🏠 Room info:",

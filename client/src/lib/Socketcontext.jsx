@@ -8,7 +8,7 @@ export const SocketProvider = ({ children }) => {
   const socketRef = useRef(null);
   const [isConnected, setIsConnected] = useState(false);
 
-  // Get user ID from sessionStorage
+ 
   const getUserId = () => {
     try {
       const user = JSON.parse(sessionStorage.getItem("user"));
@@ -18,7 +18,7 @@ export const SocketProvider = ({ children }) => {
     }
   };
 
-  // Initialize socket connection and set up event listeners
+ 
   const initializeSocket = (roomId = null) => {
     const userId = getUserId();
     if (!userId) {
@@ -26,7 +26,7 @@ export const SocketProvider = ({ children }) => {
       return;
     }
 
-    // Clean up existing connection if it exists
+  
     if (socketRef.current) {
       socketRef.current.disconnect();
       socketRef.current = null;
@@ -98,7 +98,7 @@ export const SocketProvider = ({ children }) => {
     }
   };
 
-  // Initialize socket on mount and when user changes
+  
   useEffect(() => {
     const userId = getUserId();
     if (userId) {

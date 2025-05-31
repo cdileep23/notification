@@ -21,7 +21,6 @@ export const createBlog = async (req, res) => {
       userId,
     });
 
-    // ✅ Fetch blog creator and their followers
     const blogAuthor = await userModel.findById(userId).populate("followers");
     if (!blogAuthor) {
       return res
@@ -41,7 +40,7 @@ export const createBlog = async (req, res) => {
 
       console.log("📧 Created notification:", newNotification);
 
-      // ✅ Send notification to follower's room
+
       const targetRoomId = follower._id.toString();
       const room = io.sockets.adapter.rooms.get(targetRoomId);
       console.log(
@@ -65,7 +64,7 @@ export const createBlog = async (req, res) => {
       }
     });
 
-    await Promise.all(notificationPromises); // wait for all notifications
+    await Promise.all(notificationPromises);
 
     res.status(201).json({
       success: true,
